@@ -19,5 +19,10 @@ describe('ColorAPI', () => {
         (<FetchMock>fetch).mockResponseOnce(JSON.stringify(response));
     });
 
-    it('ok', () => {});
+    describe('provided a HEX color', () => {
+        it('requests a color info from the color API', async () => {
+            await ColorAPI.fetchInfo('0047AB', 'hex');
+            expect(fetch).toHaveBeenCalledWith(`https://www.thecolorapi.com/id?hex=0047AB`);
+        });
+    });
 });

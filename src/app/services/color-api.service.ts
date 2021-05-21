@@ -15,5 +15,7 @@ export interface ColorAPIResponse {
 }
 
 export class ColorAPI {
-
+    static fetchInfo(color: string, format: ColorFormat): Promise<ColorAPIResponse> {
+        return fetch(`${SERVICE_URL}/id?${format}=${color}`).then(res => res.json());
+    }
 }
